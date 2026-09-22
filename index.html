@@ -269,9 +269,35 @@
 
   .reveal{ opacity:0; transform:translateY(18px); transition:opacity .7s ease, transform .7s ease; }
   .reveal.in{ opacity:1; transform:translateY(0); }
+
+  /* ---------- INTRO ---------- */
+  #intro-overlay{
+    position:fixed; inset:0; z-index:1000;
+    background:var(--bg);
+    display:flex; align-items:center; justify-content:center;
+    transition:opacity .6s ease;
+  }
+  #intro-overlay img{
+    width:120px; height:120px;
+    opacity:0; transform:scale(0.82);
+    animation:intro-logo-in 0.9s cubic-bezier(.2,.8,.2,1) 0.15s forwards;
+  }
+  #intro-overlay.hide{ opacity:0; pointer-events:none; }
+  @keyframes intro-logo-in{
+    to{ opacity:1; transform:scale(1); }
+  }
+  body.intro-active{ overflow:hidden; }
+
+  @media (prefers-reduced-motion: reduce){
+    #intro-overlay{ display:none; }
+  }
 </style>
 </head>
 <body>
+
+<div id="intro-overlay" aria-hidden="true">
+  <img src="papa-bear-logo.png" alt="">
+</div>
 
 <header>
   <div class="nav-inner">
@@ -547,6 +573,28 @@
       }
     });
   }
+  // intro animation
+  (function(){
+    var overlay = document.getElementById('intro-overlay');
+    if (!overlay) return;
+
+    var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var seen = sessionStorage.getItem('papabears_intro_seen');
+
+    if (reduceMotion || seen) {
+      overlay.remove();
+      return;
+    }
+
+    document.body.classList.add('intro-active');
+    sessionStorage.setItem('papabears_intro_seen', '1');
+
+    setTimeout(function(){
+      overlay.classList.add('hide');
+      document.body.classList.remove('intro-active');
+      setTimeout(function(){ overlay.remove(); }, 650);
+    }, 1400);
+  })();
 </script>
 
 </body>
