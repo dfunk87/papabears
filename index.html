@@ -69,7 +69,7 @@
     max-width:var(--max); margin:0 auto; padding:16px 32px;
     display:flex; align-items:center; justify-content:space-between;
   }
-  .brand{ display:flex; align-items:center; gap:10px; font-family:'Fraunces', serif; font-weight:600; font-size:19px; }
+  .brand{ display:flex; align-items:center; gap:10px; font-family:'Fraunces', serif; font-weight:600; font-size:17px; line-height:1.15; }
   .brand svg{ width:30px; height:30px; flex-shrink:0; }
   nav ul{ list-style:none; display:flex; gap:36px; }
   nav a{
@@ -89,7 +89,7 @@
 
   @media (max-width:820px){
     nav ul{
-      position:fixed; top:64px; left:0; right:0; bottom:0; z-index:99;
+      position:fixed; top:72px; left:0; right:0; bottom:0; z-index:99;
       background:var(--bg); flex-direction:column; padding:32px;
       gap:24px; transform:translateX(100%); transition:transform .3s ease;
     }
@@ -139,8 +139,8 @@
   .btn:focus-visible{ outline:2px solid var(--amber); outline-offset:3px; }
 
   @media (max-width:820px){
-    .hero{ min-height:auto; padding-top:120px; padding-bottom:72px; }
-    .brand{ font-size:16px; }
+    .hero{ min-height:auto; padding-top:128px; padding-bottom:72px; }
+    .brand{ font-size:13px; max-width:190px; }
   }
 
   /* ---------- WAVEFORM DIVIDER ---------- */
@@ -311,7 +311,7 @@
   <div class="nav-inner">
     <a href="#" class="brand">
       <img src="papa-bear-logo.png" alt="Music by Papa Bear logo" width="30" height="30">
-      <span>Music by Papa Bear</span>
+      <span>Music by Kyle "Papa Bear" Wilson</span>
     </a>
     <button class="menu-toggle" aria-label="Toggle menu" onclick="document.querySelector('nav ul').classList.toggle('open')">&#9776;</button>
     <nav>
