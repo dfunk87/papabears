@@ -212,6 +212,22 @@
 
   @media (max-width:820px){ .services-grid{ grid-template-columns:1fr; } }
 
+  /* ---------- DETAILS ---------- */
+  .details-list{ border-top:1px solid var(--line); }
+  .detail-row{
+    display:grid; grid-template-columns:200px 1fr; gap:24px;
+    padding:26px 0; border-bottom:1px solid var(--line);
+  }
+  .detail-row dt{
+    font-family:'IBM Plex Mono', monospace; font-size:12.5px;
+    letter-spacing:0.08em; text-transform:uppercase; color:var(--amber);
+  }
+  .detail-row dd{ color:var(--cream); font-size:15.5px; line-height:1.55; }
+
+  @media (max-width:820px){
+    .detail-row{ grid-template-columns:1fr; gap:8px; }
+  }
+
   /* ---------- TESTIMONIALS ---------- */
   .testimonial-row{ display:grid; grid-template-columns:repeat(3,1fr); gap:40px; }
   .testimonial{ border-left:2px solid var(--purple); padding-left:22px; }
@@ -268,6 +284,7 @@
       <ul>
         <li><a href="#music">Music</a></li>
         <li><a href="#services">Services</a></li>
+        <li><a href="#details">Details</a></li>
         <li><a href="#about">About</a></li>
         <li><a href="#testimonials">Reviews</a></li>
         <li><a href="#booking" class="nav-cta">Check Availability</a></li>
@@ -381,6 +398,37 @@
         </ul>
       </div>
     </div>
+  </div>
+</section>
+
+<section id="details">
+  <div class="wrap reveal">
+    <div class="section-head">
+      <span class="eyebrow">Details</span>
+      <h2>What to expect when you book.</h2>
+    </div>
+    <dl class="details-list">
+      <div class="detail-row">
+        <dt>Gear</dt>
+        <dd>Bose L1 Pro 16 PA system, Shure SM58 &amp; Beta 58A microphones, fully licensed backing tracks — fully self-contained, no in-house sound system needed.</dd>
+      </div>
+      <div class="detail-row">
+        <dt>Music Genres</dt>
+        <dd>Jazz, swing, pop, soul, R&amp;B, Motown, and musical theatre.</dd>
+      </div>
+      <div class="detail-row">
+        <dt>Transport</dt>
+        <dd>Based in Luton, Bedfordshire — happy to travel UK-wide when travel and accommodation are covered.</dd>
+      </div>
+      <div class="detail-row">
+        <dt>Insurance</dt>
+        <dd>£10,000,000 Public Liability Insurance.</dd>
+      </div>
+      <div class="detail-row">
+        <dt>Experience</dt>
+        <dd>Solo stage performance experience, plus group performances at Alexandra Palace.</dd>
+      </div>
+    </dl>
   </div>
 </section>
 
