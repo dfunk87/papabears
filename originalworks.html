@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Original Works | Music by Kyle "Papa Bear" Wilson</title>
+<link rel="icon" type="image/png" href="papa-bear-logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,500&family=Work+Sans:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #0B0A0D;
+    --purple: #6F4E9E;
+    --purple-soft: #8A6BB5;
+    --amber: #C9963E;
+    --cream: #F3EFE8;
+    --muted: #A99DB0;
+    --line: #2A2430;
+  }
+  *{ margin:0; padding:0; box-sizing:border-box; }
+  body{
+    background:var(--bg); color:var(--cream);
+    font-family:'Work Sans', sans-serif;
+    min-height:100vh; display:flex; align-items:center; justify-content:center;
+    padding:32px; text-align:center;
+  }
+  .logo{ width:72px; height:72px; opacity:0.85; margin-bottom:28px; }
+  .eyebrow{
+    font-family:'IBM Plex Mono', monospace; font-size:12.5px;
+    letter-spacing:0.14em; text-transform:uppercase; color:var(--amber);
+    display:block; margin-bottom:18px;
+  }
+  h1{
+    font-family:'Fraunces', serif; font-weight:600; font-size:clamp(32px, 6vw, 52px);
+    margin-bottom:18px; line-height:1.15;
+  }
+  h1 em{ font-style:italic; font-weight:500; color:var(--purple-soft); }
+  p{ color:var(--muted); font-size:16.5px; max-width:440px; margin:0 auto 32px; }
+  .back{
+    display:inline-flex; align-items:center; gap:8px;
+    font-family:'IBM Plex Mono', monospace; font-size:13.5px;
+    letter-spacing:0.04em; text-transform:uppercase;
+    color:var(--cream); border:1px solid var(--line);
+    padding:13px 26px; border-radius:2px; transition:border-color .2s ease;
+    text-decoration:none;
+  }
+  .back:hover{ border-color:var(--purple-soft); }
+</style>
+</head>
+<body>
+  <div>
+    <img class="logo" src="papa-bear-logo.png" alt="Music by Papa Bear logo">
+    <span class="eyebrow">Original Works</span>
+    <h1>Something's <em>coming together</em> here.</h1>
+    <p>This page is under construction — original songs and covers will be live here soon.</p>
+    <a class="back" href="/">&larr; Back to Home</a>
+  </div>
+</body>
+</html>
