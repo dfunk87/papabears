@@ -377,10 +377,10 @@
           <p>Birthdays, anniversaries and get-togethers that deserve a live voice, not a playlist.</p>
           <div class="from"><b><small>from</small>£300</b><span>See prices</span></div>
         </a>
-        <a class="kind" href="#weddings">
+        <a class="kind" href="/weddings/">
           <h3>Weddings</h3>
           <p>The ceremony, the first dance, the party, or all of it, sung live from start to finish.</p>
-          <div class="from"><b><small>from</small>£300</b><span>Wedding details</span></div>
+          <div class="from"><b><small>from</small>£300</b><span>The wedding page</span></div>
         </a>
       </div>
     </div>
@@ -601,6 +601,8 @@
 
 
 <script>
+  // old links to /#weddings go to the dedicated wedding page
+  (function(){ function go(){ if (location.hash.toLowerCase() === '#weddings') location.replace('/weddings/'); } go(); window.addEventListener('hashchange', go); })();
   var btn = document.querySelector('.menu-btn'), menu = document.getElementById('menu');
   btn.addEventListener('click', function(){
     var open = menu.classList.toggle('open');
