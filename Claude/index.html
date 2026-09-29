@@ -577,9 +577,9 @@ body.at-form .mini.show{ transform:translateY(160%); }
     <span class="side rv">Pick your occasion</span>
     <h2 class="rv">Made for <em>your</em> night</h2>
     <div class="singles">
-      <a class="single c1 rv" href="#weddings"><span class="disc" aria-hidden="true"></span>
+      <a class="single c1 rv" href="/weddings/"><span class="disc" aria-hidden="true"></span>
         <span class="cover"><span><h3>Weddings</h3><p>The ceremony, the first dance, the party, or all of it.</p></span>
-          <span class="sticker-price"><span><small>from</small><b>£300</b></span></span><span class="go"><span>The running order</span><span>→</span></span></span></a>
+          <span class="sticker-price"><span><small>from</small><b>£300</b></span></span><span class="go"><span>The wedding page</span><span>→</span></span></span></a>
       <a class="single c2 rv" href="#rates"><span class="disc" aria-hidden="true"></span>
         <span class="cover"><span><h3>Corporate</h3><p>Launches, award nights and client events, pitched to the room and the brief.</p></span>
           <span class="sticker-price"><span><small>from</small><b>£400</b></span></span><span class="go"><span>Rates and rider</span><span>→</span></span></span></a>
@@ -785,6 +785,8 @@ body.at-form .mini.show{ transform:translateY(160%); }
 <script>
 (function(){
   var root = document.documentElement; root.classList.add('js');
+  function toWeddings(){ if (location.hash.toLowerCase() === '#weddings') location.replace('/weddings/'); }
+  toWeddings(); window.addEventListener('hashchange', toWeddings);
   var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   // menu
