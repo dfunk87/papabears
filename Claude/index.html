@@ -177,12 +177,12 @@ h1 .big.accent{ color:var(--purple); }
 .record .label img{ width:64%; }
 .record .label::after{ content:""; position:absolute; width:7%; height:7%; border-radius:50%; background:var(--paper); }
 .record .spinner{ position:absolute; inset:0; border-radius:50%; }
-body.is-playing .record{ animation:none; transform:translateX(44%); transition:transform .8s cubic-bezier(.2,.8,.2,1); }
-body.is-playing .record .spinner{ animation:spin 1.8s linear infinite; }
+body.now-playing .record{ animation:none; transform:translateX(44%); transition:transform .8s cubic-bezier(.2,.8,.2,1); }
+body.now-playing .record .spinner{ animation:spin 1.8s linear infinite; }
 @keyframes slideout{ to{ transform:translateX(34%); } }
 @keyframes spin{ to{ transform:rotate(360deg); } }
 .tonearm{ position:absolute; right:-2%; top:-4%; width:34%; z-index:4; transform-origin:78% 12%; transform:rotate(-24deg); transition:transform .9s cubic-bezier(.3,.7,.2,1); pointer-events:none; }
-body.is-playing .tonearm{ transform:rotate(-8deg); }
+body.now-playing .tonearm{ transform:rotate(-8deg); }
 .tonearm path, .tonearm circle{ fill:none; stroke:var(--ink); }
 
 /* the rotating "hear me sing" badge */
@@ -819,7 +819,7 @@ body.at-form .mini.show{ transform:translateY(160%); }
   }
   function paint(){
     var on = cur > -1 && !audio.paused;
-    document.body.classList.toggle('is-playing', on);
+    document.body.classList.toggle('now-playing', on);
     trks.forEach(function(t, i){
       var p = on && i === cur; t.classList.toggle('is-playing', p); t.setAttribute('aria-pressed', p);
       t.setAttribute('aria-label', (p ? 'Pause ' : 'Play ') + t.getAttribute('data-name') + ' by ' + t.getAttribute('data-artist'));
