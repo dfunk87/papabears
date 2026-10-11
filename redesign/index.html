@@ -14,6 +14,7 @@
 <style>
   :root{
     --barh:40px;
+    --arrow:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'><path d='M7 17 17 7M8 7h9v9'/></svg>");
     --stage:#F5F0F6; --band:#ECE4F0; --card:#FFFFFF; --ink:#1D1426; --muted:#5E5269;
     --lilac:#63409A; --brass:#96641F; --brass-fill:#C8913F; --on-brass:#1D1426;
     --line:#DAD0E1; --glow:rgba(200,145,63,.20); --grain:.03;
@@ -334,11 +335,22 @@
   .facts b{ color:var(--ink); font-weight:600; }
   .cause{
     display:inline-flex; align-items:center; gap:8px; margin-top:18px;
-    font-size:14px; font-weight:600; color:var(--ink);
+    font-size:14px; font-weight:600; color:var(--ink); text-decoration:none;
     background:color-mix(in srgb, var(--lilac) 14%, transparent);
     border:1px solid color-mix(in srgb, var(--lilac) 32%, transparent);
     padding:7px 14px; border-radius:999px;
+    transition:background .2s ease, border-color .2s ease;
   }
+  a.cause::after{
+    content:""; width:11px; height:11px; flex:none; opacity:.55;
+    background:currentColor;
+    -webkit-mask:var(--arrow) center/contain no-repeat; mask:var(--arrow) center/contain no-repeat;
+  }
+  a.cause:hover{
+    background:color-mix(in srgb, var(--lilac) 24%, transparent);
+    border-color:color-mix(in srgb, var(--lilac) 55%, transparent);
+  }
+  a.cause:hover::after{ opacity:.9; }
   @media (max-width:860px){
     .show{ grid-template-columns:auto 1fr; }
     .show .btn{ grid-column:1 / -1; width:100%; }
@@ -587,7 +599,7 @@
             <span>Doors <b>7pm</b>, show <b>7:30pm</b></span>
             <span>Tickets <b>&pound;15</b>, bring your own drinks</span>
           </div>
-          <span class="cause">In Aid of X-4rce - Supporting Men in the community</span>
+          <a class="cause" href="https://www.x-4rce.com/" target="_blank" rel="noopener">In Aid of X-4rce - Supporting Men in the community</a>
         </div>
         <a class="btn btn-primary" href="https://www.tickettailor.com/events/kylewilson/2333117" target="_blank" rel="noopener">Get tickets</a>
       </article>
