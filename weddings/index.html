@@ -167,6 +167,11 @@ body.now-playing .disc{ animation:spin 3.2s linear infinite; }
 .trk.is-playing .pb svg{ fill:var(--paper); }
 .trk .nm{ display:block; font-family:var(--serif); font-size:25px; line-height:1.15; }
 .trk .ar{ display:block; font-size:14.5px; color:var(--muted); }
+.trk .mine{
+  display:inline-block; vertical-align:middle; margin-left:10px; font-style:normal;
+  font-size:11px; font-weight:600; letter-spacing:.09em; text-transform:uppercase;
+  color:var(--gold); border:1px solid var(--gold); border-radius:999px; padding:3px 9px; line-height:1;
+}
 .trk .du{ font-size:14px; color:var(--muted); font-variant-numeric:tabular-nums; }
 .trk .prog{ position:absolute; left:0; bottom:-1px; height:1.5px; width:var(--p, 0%); background:var(--gold); transition:width .25s linear; }
 
@@ -359,9 +364,9 @@ body.at-form .mini.show{ transform:translate(-50%, 170%); }
       <span class="label">Wedding singer · Beds, Herts &amp; Bucks</span>
       <h1 id="h1">Live vocals that turn <em>your day</em> into everyone’s story.</h1>
       <p class="lead">I’m <b>Kyle “Papa Bear” Wilson</b>, a soul and swing tenor. From your walk down the aisle to your last dance, I’ll sing the songs that matter to you.</p>
-      <button class="seal-m" type="button" data-play="5" aria-label="Play a sample track">
+      <button class="seal-m" type="button" data-play="2" aria-label="Play Stand By Me, a live recording">
         <span class="wax"><img src="/assets/weddings/img/label-logo.png" alt=""><span class="ic"><svg class="i-play"><use href="#play"/></svg><svg class="i-pause"><use href="#pause"/></svg></span></span>
-        <span><b>Hear a sample</b><small>Demo track</small></span>
+        <span><b>Hear a sample</b><small>Stand By Me</small></span>
       </button>
       <form class="datecheck" id="datecheck" novalidate>
         <div class="field"><label for="hero-date">Your wedding date</label><input id="hero-date" type="date"></div>
@@ -372,9 +377,9 @@ body.at-form .mini.show{ transform:translate(-50%, 170%); }
     <figure class="portrait">
       <span class="disc" aria-hidden="true"></span>
       <div class="frame"><img src="/assets/weddings/img/hero-keys.jpg" alt="Kyle, dressed for a wedding, at a timber-beamed venue" width="960" height="1200" fetchpriority="high"></div>
-      <button class="seal" type="button" data-play="5" aria-label="Play a sample track">
+      <button class="seal" type="button" data-play="2" aria-label="Play Stand By Me, a live recording">
         <span class="wax"><img src="/assets/weddings/img/label-logo.png" alt=""><span class="ic"><svg class="i-play"><use href="#play"/></svg><svg class="i-pause"><use href="#pause"/></svg></span></span>
-        <span class="txt"><b>Hear a sample</b><small>Demo track</small></span>
+        <span class="txt"><b>Hear a sample</b><small>Stand By Me</small></span>
       </button>
     </figure>
   </div>
@@ -386,17 +391,17 @@ body.at-form .mini.show{ transform:translate(-50%, 170%); }
       <span class="label rv">Listen</span>
       <h2 class="rv">Songs for <em>every moment</em></h2>
       <p class="lead rv">A few favourites, grouped by the moment couples most often choose them for. Your own songs are always welcome.</p>
-      <p class="note rv">Demo audio: these are placeholder instrumentals until new recordings of my voice are added.</p>
+      <p class="note rv"><b>Stand By Me</b> is me, recorded live. The rest are placeholder instrumentals for now, marked as such, and I am replacing them with my own recordings one at a time.</p>
     </div>
     <div class="rv">
       <div class="moment">
         <h4>Walking down the aisle</h4>
-        <button class="trk" type="button" data-src="/assets/audio/over-the-rainbow.mp3" data-name="Over the Rainbow" data-artist="Eva Cassidy" aria-pressed="false" aria-label="Play Over the Rainbow (demo track)">
+        <button class="trk" type="button" data-demo="1" data-src="/assets/audio/over-the-rainbow.mp3" data-name="Over the Rainbow" data-artist="Eva Cassidy" aria-pressed="false" aria-label="Play Over the Rainbow (demo track)">
           <span class="pb" aria-hidden="true"><svg class="i-play"><use href="#play"/></svg><svg class="i-pause"><use href="#pause"/></svg></span>
           <span><span class="nm">Over the Rainbow</span><span class="ar">Eva Cassidy</span></span>
           <span class="du">0:28</span><span class="prog" aria-hidden="true"></span>
         </button>
-        <button class="trk" type="button" data-src="/assets/audio/make-you-feel-my-love.mp3" data-name="Make You Feel My Love" data-artist="Adele" aria-pressed="false" aria-label="Play Make You Feel My Love (demo track)">
+        <button class="trk" type="button" data-demo="1" data-src="/assets/audio/make-you-feel-my-love.mp3" data-name="Make You Feel My Love" data-artist="Adele" aria-pressed="false" aria-label="Play Make You Feel My Love (demo track)">
           <span class="pb" aria-hidden="true"><svg class="i-play"><use href="#play"/></svg><svg class="i-pause"><use href="#pause"/></svg></span>
           <span><span class="nm">Make You Feel My Love</span><span class="ar">Adele</span></span>
           <span class="du">0:29</span><span class="prog" aria-hidden="true"></span>
@@ -404,20 +409,20 @@ body.at-form .mini.show{ transform:translate(-50%, 170%); }
       </div>
       <div class="moment">
         <h4>Signing the register</h4>
-        <button class="trk" type="button" data-src="/assets/audio/stand-by-me.mp3" data-name="Stand By Me" data-artist="The Kingdom Choir" aria-pressed="false" aria-label="Play Stand By Me (demo track)">
+        <button class="trk" type="button" data-src="/assets/audio/stand-by-me.mp3" data-name="Stand By Me" data-artist="The Kingdom Choir" aria-pressed="false" aria-label="Play Stand By Me, a live recording">
           <span class="pb" aria-hidden="true"><svg class="i-play"><use href="#play"/></svg><svg class="i-pause"><use href="#pause"/></svg></span>
-          <span><span class="nm">Stand By Me</span><span class="ar">The Kingdom Choir</span></span>
-          <span class="du">0:28</span><span class="prog" aria-hidden="true"></span>
+          <span><span class="nm">Stand By Me <i class="mine">My voice</i></span><span class="ar">The Kingdom Choir</span></span>
+          <span class="du">0:33</span><span class="prog" aria-hidden="true"></span>
         </button>
       </div>
       <div class="moment">
         <h4>Drinks reception</h4>
-        <button class="trk" type="button" data-src="/assets/audio/thats-life.mp3" data-name="That’s Life" data-artist="Frank Sinatra" aria-pressed="false" aria-label="Play That’s Life (demo track)">
+        <button class="trk" type="button" data-demo="1" data-src="/assets/audio/thats-life.mp3" data-name="That’s Life" data-artist="Frank Sinatra" aria-pressed="false" aria-label="Play That’s Life (demo track)">
           <span class="pb" aria-hidden="true"><svg class="i-play"><use href="#play"/></svg><svg class="i-pause"><use href="#pause"/></svg></span>
           <span><span class="nm">That’s Life</span><span class="ar">Frank Sinatra</span></span>
           <span class="du">0:24</span><span class="prog" aria-hidden="true"></span>
         </button>
-        <button class="trk" type="button" data-src="/assets/audio/lets-stay-together.mp3" data-name="Let’s Stay Together" data-artist="Al Green" aria-pressed="false" aria-label="Play Let’s Stay Together (demo track)">
+        <button class="trk" type="button" data-demo="1" data-src="/assets/audio/lets-stay-together.mp3" data-name="Let’s Stay Together" data-artist="Al Green" aria-pressed="false" aria-label="Play Let’s Stay Together (demo track)">
           <span class="pb" aria-hidden="true"><svg class="i-play"><use href="#play"/></svg><svg class="i-pause"><use href="#pause"/></svg></span>
           <span><span class="nm">Let’s Stay Together</span><span class="ar">Al Green</span></span>
           <span class="du">0:26</span><span class="prog" aria-hidden="true"></span>
@@ -425,17 +430,17 @@ body.at-form .mini.show{ transform:translate(-50%, 170%); }
       </div>
       <div class="moment">
         <h4>Your first dance</h4>
-        <button class="trk" type="button" data-src="/assets/audio/all-of-me.mp3" data-name="All of Me" data-artist="John Legend" aria-pressed="false" aria-label="Play All of Me (demo track)">
+        <button class="trk" type="button" data-demo="1" data-src="/assets/audio/all-of-me.mp3" data-name="All of Me" data-artist="John Legend" aria-pressed="false" aria-label="Play All of Me (demo track)">
           <span class="pb" aria-hidden="true"><svg class="i-play"><use href="#play"/></svg><svg class="i-pause"><use href="#pause"/></svg></span>
           <span><span class="nm">All of Me</span><span class="ar">John Legend</span></span>
           <span class="du">0:29</span><span class="prog" aria-hidden="true"></span>
         </button>
-        <button class="trk" type="button" data-src="/assets/audio/amazed.mp3" data-name="Amazed" data-artist="Lonestar" aria-pressed="false" aria-label="Play Amazed (demo track)">
+        <button class="trk" type="button" data-demo="1" data-src="/assets/audio/amazed.mp3" data-name="Amazed" data-artist="Lonestar" aria-pressed="false" aria-label="Play Amazed (demo track)">
           <span class="pb" aria-hidden="true"><svg class="i-play"><use href="#play"/></svg><svg class="i-pause"><use href="#pause"/></svg></span>
           <span><span class="nm">Amazed</span><span class="ar">Lonestar</span></span>
           <span class="du">0:27</span><span class="prog" aria-hidden="true"></span>
         </button>
-        <button class="trk" type="button" data-src="/assets/audio/tennessee-whiskey.mp3" data-name="Tennessee Whiskey" data-artist="Chris Stapleton" aria-pressed="false" aria-label="Play Tennessee Whiskey (demo track)">
+        <button class="trk" type="button" data-demo="1" data-src="/assets/audio/tennessee-whiskey.mp3" data-name="Tennessee Whiskey" data-artist="Chris Stapleton" aria-pressed="false" aria-label="Play Tennessee Whiskey (demo track)">
           <span class="pb" aria-hidden="true"><svg class="i-play"><use href="#play"/></svg><svg class="i-pause"><use href="#pause"/></svg></span>
           <span><span class="nm">Tennessee Whiskey</span><span class="ar">Chris Stapleton</span></span>
           <span class="du">0:26</span><span class="prog" aria-hidden="true"></span>
@@ -633,7 +638,6 @@ body.at-form .mini.show{ transform:translate(-50%, 170%); }
 (function(){
   var root = document.documentElement; root.classList.add('js');
   var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var DEMO = true;
 
   var mb = document.querySelector('.menu-btn'), menu = document.getElementById('menu');
   mb.addEventListener('click', function(){ var o = menu.classList.toggle('open'); mb.setAttribute('aria-expanded', o); mb.setAttribute('aria-label', o ? 'Close menu' : 'Open menu'); });
@@ -663,7 +667,7 @@ body.at-form .mini.show{ transform:translate(-50%, 170%); }
     document.body.classList.toggle('now-playing', on);
     trks.forEach(function(t, i){
       var p = on && i === cur; t.classList.toggle('is-playing', p); t.setAttribute('aria-pressed', p);
-      t.setAttribute('aria-label', (p ? 'Pause ' : 'Play ') + t.getAttribute('data-name') + (DEMO ? ' (demo track)' : ''));
+      t.setAttribute('aria-label', (p ? 'Pause ' : 'Play ') + t.getAttribute('data-name') + (t.hasAttribute('data-demo') ? ' (demo track)' : ', a live recording'));
     });
     starters.forEach(function(s){ s.classList.toggle('is-playing', on && cur === +s.getAttribute('data-play')); });
     mini.classList.toggle('is-playing', on); mt.setAttribute('aria-label', on ? 'Pause' : 'Play');
@@ -675,7 +679,7 @@ body.at-form .mini.show{ transform:translate(-50%, 170%); }
     if (cur < 0 || !audio.duration) return;
     var p = (audio.currentTime / audio.duration * 100) + '%';
     trks[cur].style.setProperty('--p', p); mini.style.setProperty('--p', p);
-    mMeta.textContent = (DEMO ? 'Demo track · ' : trks[cur].getAttribute('data-artist') + ' · ') + fmt(audio.currentTime) + ' / ' + fmt(audio.duration);
+    mMeta.textContent = (trks[cur].hasAttribute('data-demo') ? 'Demo track' : 'Live recording') + ' · ' + fmt(audio.currentTime) + ' / ' + fmt(audio.duration);
   });
   trks.forEach(function(t, i){ t.addEventListener('click', function(){ toggle(i); }); });
   starters.forEach(function(s){ s.addEventListener('click', function(){ toggle(+s.getAttribute('data-play')); }); });
