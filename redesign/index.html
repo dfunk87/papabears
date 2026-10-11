@@ -357,7 +357,7 @@
 </svg>
 
 <header>
-  <a class="gigbar" href="#live">
+  <a class="gigbar" href="https://www.tickettailor.com/events/kylewilson/2333117" target="_blank" rel="noopener">
     <b>Fri 11 Dec</b>
     <span class="sep">&middot;</span>
     <span>An Evening to Remember</span>
@@ -365,7 +365,7 @@
     <span class="trim">Lilley, Herts</span>
     <span class="sep trim">&middot;</span>
     <span class="trim">Tickets &pound;15</span>
-    <span class="go">Details</span>
+    <span class="go">Get tickets</span>
   </a>
   <div class="wrap nav">
     <a class="brand" href="#top" aria-label="Papa Bear, back to top">
@@ -587,9 +587,9 @@
             <span>Doors <b>7pm</b>, show <b>7:30pm</b></span>
             <span>Tickets <b>&pound;15</b>, bring your own drinks</span>
           </div>
-          <span class="cause">In aid of a local men&rsquo;s mental health charity</span>
+          <span class="cause">In Aid of X-4rce - Supporting Men in the community</span>
         </div>
-        <a class="btn btn-ghost" href="mailto:onstage@musicbypapabear.co.uk?subject=Tickets%20for%20An%20Evening%20to%20Remember">Ask about tickets</a>
+        <a class="btn btn-primary" href="https://www.tickettailor.com/events/kylewilson/2333117" target="_blank" rel="noopener">Get tickets</a>
       </article>
     </div>
   </section>
@@ -755,8 +755,8 @@
   if (until && new Date() >= new Date(until + 'T00:00:00')) {
     sec.remove();
     document.documentElement.classList.add('no-gig');
-    var nav = document.querySelector('a[href="#live"]');
-    if (nav && nav.parentNode) nav.parentNode.removeChild(nav);
+    var bar = document.querySelector('.gigbar');
+    if (bar && bar.parentNode) bar.parentNode.removeChild(bar);
   }
 })();
 </script>
