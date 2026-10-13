@@ -359,6 +359,40 @@
     .when{ width:100%; display:flex; justify-content:center; gap:10px; padding:10px 0; }
     .when b{ font-size:26px; }
   }
+
+  /* originals signpost */
+  .ownsongs{
+    position:relative; isolation:isolate; overflow:hidden;
+    background:linear-gradient(135deg,#1B1226 0%,#3C2560 48%,#19101F 100%);
+    color:#F5EFE6;
+  }
+  .ownsongs::before{
+    content:""; position:absolute; inset:0; z-index:-1;
+    background:radial-gradient(52% 70% at 88% 12%, rgba(200,145,63,.26), transparent 70%);
+  }
+  .ownsongs .wrap{ display:grid; grid-template-columns:auto 1fr; gap:clamp(30px,5vw,68px); align-items:center; }
+  .covers{ display:flex; gap:16px; }
+  .cover{
+    width:clamp(96px,11vw,136px); aspect-ratio:1; border-radius:12px; display:grid; place-items:center;
+    font-family:var(--display); font-style:italic; font-weight:500; font-size:clamp(17px,1.9vw,24px);
+    line-height:1.08; text-align:center; color:#F6F1EA; letter-spacing:-.01em; padding:0 8px;
+    box-shadow:0 22px 44px -26px rgba(0,0,0,.8);
+  }
+  .cover.a{ background:linear-gradient(145deg,#4B2F78,#6B43A5 46%,#241733); transform:rotate(-3deg); }
+  .cover.b{ background:linear-gradient(145deg,#1E1428,#5A3A91 52%,#C8913F 140%); transform:rotate(3deg); }
+  .ownsongs h2{ color:#F5EFE6; }
+  .ownsongs .hl{ color:#DDAE62; }
+  .ownsongs .intro{ color:#CBBCD6; }
+  .ownsongs .btn-primary{ background:#DDAE62; color:#1B1226; }
+  .ownsongs .tracks{
+    list-style:none; display:flex; flex-wrap:wrap; gap:8px 20px; margin-top:20px;
+    font-size:15.5px; color:#CBBCD6;
+  }
+  .ownsongs .tracks b{ color:#F5EFE6; font-weight:600; }
+  @media (max-width:820px){
+    .ownsongs .wrap{ grid-template-columns:1fr; gap:28px; }
+    .covers{ justify-content:flex-start; }
+  }
 </style>
 </head>
 <body>
@@ -392,6 +426,7 @@
       <li><a href="#events">Events</a></li>
       <li><a href="#prices">Prices</a></li>
       <li><a href="/weddings/">Weddings</a></li>
+      <li><a href="/originalworks">Originals</a></li>
       <li><a href="#parties">Parties</a></li>
       <li><a href="#corporate">Corporate</a></li>
       <li><a href="#about">About</a></li>
@@ -490,13 +525,33 @@
             <li><span>Tennessee Whiskey</span><span>Chris Stapleton</span></li>
             <li><span>That’s Life</span><span>Frank Sinatra</span></li>
           </ul>
-          <p class="more">Want to hear more? <a class="link" href="/originalworks">Listen to my original work</a>.</p>
+          <p class="more">I write my own songs too. <a class="link" href="/originalworks">Hear Own Me and my soul rework of 21 Seconds</a>.</p>
         </div>
       </div>
     </div>
   </section>
 
   <!-- 4. Weddings: short signpost to the dedicated page -->
+  <!-- 4b. my own songs -->
+  <section id="originals" class="ownsongs">
+    <div class="wrap">
+      <div class="covers" aria-hidden="true">
+        <div class="cover a">Own<br>Me</div>
+        <div class="cover b">21<br>Seconds</div>
+      </div>
+      <div>
+        <h2>I write <span class="hl">my own</span> too</h2>
+        <p class="intro">Everything above is me singing other people&rsquo;s songs. This is the other half: my own material, and the records I could not leave alone until I had rebuilt them my way.</p>
+        <ul class="tracks">
+          <li><b>Own Me</b> &middot; an original</li>
+          <li><b>21 Seconds (Soul Mix)</b> &middot; So Solid Crew, reworked</li>
+        </ul>
+        <div style="margin-top:30px"><a class="btn btn-primary" href="/originalworks">Hear my own songs</a></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. weddings signpost -->
   <section id="weddings" class="band">
     <div class="wrap">
       <h2>Getting married? <span class="hl">There’s a page for that</span></h2>
