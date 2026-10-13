@@ -436,6 +436,39 @@
   .rel .blurb{ margin-top:18px; color:var(--muted); max-width:58ch; }
   .rel .blurb em{ font-family:var(--display); font-style:italic; font-size:1.08em; color:var(--ink); }
 
+  /* player */
+  .player{
+    margin-top:28px; display:flex; align-items:center; gap:18px;
+    max-width:460px;
+  }
+  .pbtn{
+    width:56px; height:56px; flex:none; border-radius:50%; border:0; cursor:pointer;
+    background:var(--brass-fill); color:var(--on-brass);
+    display:grid; place-items:center; transition:transform .18s ease, filter .18s ease;
+  }
+  .pbtn:hover{ transform:translateY(-1px); filter:brightness(1.07); }
+  .pbtn svg{ width:16px; height:16px; fill:currentColor; }
+  .pbtn .i-pause{ display:none; }
+  .pbtn.on .i-play{ display:none; }
+  .pbtn .i-pause{ display:none; }
+  .pbtn.on .i-pause{ display:block; }
+  .scrub{
+    flex:1; min-width:0; display:block; height:26px; padding:0; border:0; background:none;
+    cursor:pointer; position:relative;
+  }
+  .scrub::before{
+    content:""; position:absolute; left:0; right:0; top:50%; transform:translateY(-50%);
+    height:4px; border-radius:999px; background:var(--line);
+  }
+  .scrub::after{
+    content:""; position:absolute; left:0; top:50%; transform:translateY(-50%);
+    width:var(--p, 0%); height:4px; border-radius:999px; background:var(--brass-fill);
+    transition:width .12s linear;
+  }
+  .time{ font-size:14px; color:var(--muted); font-variant-numeric:tabular-nums; flex:none; }
+  @media (max-width:720px){ .player{ max-width:none; } }
+
+
   /* the player slot, before there is a recording in it */
   .soon{
     margin-top:26px; display:inline-flex; align-items:center; gap:16px;
@@ -518,10 +551,7 @@
           <h2>Own Me</h2>
           <p class="credit">Written and performed by <b>Kyle &ldquo;Papa Bear&rdquo; Wilson</b></p>
           <p class="blurb">A self empowerment song about taking back control. It is built around one line, <em>&ldquo;You don&rsquo;t own me anymore&rdquo;</em>, carried by a driving melody that never lets the song sit still.</p>
-          <div class="soon">
-            <span class="disc" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
-            <span><b class="t">Recording coming soon</b><span class="s">It will play right here when it lands</span></span>
-          </div>
+<div class="player"><button class="pbtn" type="button" data-src="/assets/audio/own-me.mp3" data-name="Own Me" aria-label="Play Own Me"><svg class="i-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg><svg class="i-pause" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 5h4v14H7zm6 0h4v14h-4z"/></svg></button><button class="scrub" type="button" aria-label="Seek"></button><span class="time">0:00 / 4:42</span></div>
         </div>
       </article>
 
@@ -532,10 +562,7 @@
           <h2>21 Seconds <span style="white-space:nowrap">(Soul Mix)</span></h2>
           <p class="credit">Originally by <b>So Solid Crew</b>, 2001. Soul arrangement and vocal by <b>Kyle &ldquo;Papa Bear&rdquo; Wilson</b>.</p>
           <p class="blurb">A UK garage record from 2001, taken apart and rebuilt as a soul record. The song belongs to So Solid Crew. What is mine here is the arrangement and the voice on it.</p>
-          <div class="soon">
-            <span class="disc" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
-            <span><b class="t">Recording coming soon</b><span class="s">It will play right here when it lands</span></span>
-          </div>
+<div class="player"><button class="pbtn" type="button" data-src="/assets/audio/21-seconds-soul-mix.mp3" data-name="21 Seconds (Soul Mix)" aria-label="Play 21 Seconds (Soul Mix)"><svg class="i-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg><svg class="i-pause" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 5h4v14H7zm6 0h4v14h-4z"/></svg></button><button class="scrub" type="button" aria-label="Seek"></button><span class="time">0:00 / 3:53</span></div>
         </div>
       </article>
 
@@ -584,6 +611,50 @@
       bar.parentNode.removeChild(bar);
       document.documentElement.classList.add('no-gig');
     }
+  })();
+
+  /* one shared audio element, one track playing at a time */
+  (function(){
+    var rows = [].slice.call(document.querySelectorAll('.player'));
+    if (!rows.length) return;
+    var audio = new Audio(); audio.preload = 'none';
+    var cur = -1;
+    function fmt(s){ s = Math.max(0, Math.floor(s||0)); return Math.floor(s/60) + ':' + ('0' + s%60).slice(-2); }
+    function paint(){
+      rows.forEach(function(r,i){
+        var on = i === cur && !audio.paused;
+        var b = r.querySelector('.pbtn');
+        b.classList.toggle('on', on);
+        b.setAttribute('aria-label', (on ? 'Pause ' : 'Play ') + b.getAttribute('data-name'));
+      });
+    }
+    rows.forEach(function(r,i){
+      var btn = r.querySelector('.pbtn'), scrub = r.querySelector('.scrub'), time = r.querySelector('.time');
+      r._time = time; r._scrub = scrub;
+      btn.addEventListener('click', function(){
+        if (i === cur) { audio.paused ? audio.play().catch(function(){}) : audio.pause(); return; }
+        if (cur > -1) { rows[cur]._scrub.style.setProperty('--p','0%'); rows[cur]._time.textContent = '0:00 / ' + rows[cur]._total; }
+        cur = i; audio.src = btn.getAttribute('data-src'); audio.play().catch(function(){});
+      });
+      scrub.addEventListener('click', function(e){
+        if (i !== cur || !audio.duration) return;
+        var b = scrub.getBoundingClientRect();
+        audio.currentTime = Math.min(Math.max((e.clientX - b.left) / b.width, 0), 1) * audio.duration;
+      });
+      r._total = time.textContent.split(' / ')[1];
+    });
+    audio.addEventListener('timeupdate', function(){
+      if (cur < 0 || !audio.duration) return;
+      rows[cur]._scrub.style.setProperty('--p', (audio.currentTime / audio.duration * 100) + '%');
+      rows[cur]._time.textContent = fmt(audio.currentTime) + ' / ' + fmt(audio.duration);
+    });
+    audio.addEventListener('play', paint);
+    audio.addEventListener('pause', paint);
+    audio.addEventListener('ended', function(){
+      rows[cur]._scrub.style.setProperty('--p','0%');
+      rows[cur]._time.textContent = '0:00 / ' + rows[cur]._total;
+      paint();
+    });
   })();
 
   document.getElementById('yr').textContent = new Date().getFullYear();
