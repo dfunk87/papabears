@@ -80,6 +80,7 @@
   .nav ul{ list-style:none; display:flex; align-items:center; gap:28px; }
   .nav ul a{ text-decoration:none; font-size:15px; color:var(--muted); transition:color .2s ease; }
   .nav ul a:hover{ color:var(--ink); }
+  .nav ul a[aria-current="page"]{ color:var(--ink); font-weight:500; }
   .nav ul .btn{ min-height:42px; padding:0 20px; font-size:14.5px; color:var(--on-brass); }
   .head-cta{ display:none; }
   .menu-btn{ display:none; background:none; border:1px solid var(--line); color:var(--ink); width:46px; height:46px; border-radius:999px; cursor:pointer; }
@@ -397,6 +398,27 @@
   .ow-hero h1 em{ font-style:italic; color:var(--lilac); }
   .ow-hero .intro{ margin-top:22px; font-size:19px; max-width:54ch; }
 
+  /* hero portrait */
+  .ow-hero .wrap{ display:grid; grid-template-columns:1.08fr .92fr; gap:clamp(36px,5vw,76px); align-items:center; }
+  .shot{ position:relative; justify-self:end; width:min(430px,100%); }
+  .shot img{
+    width:100%; height:auto; display:block; border-radius:18px;
+    filter:grayscale(1) contrast(1.04);
+    box-shadow:0 44px 90px -46px rgba(0,0,0,.72), 0 0 0 1px color-mix(in srgb, var(--line) 80%, transparent);
+  }
+  .shot::after{
+    content:""; position:absolute; inset:0; border-radius:18px; pointer-events:none;
+    background:linear-gradient(176deg, transparent 54%, color-mix(in srgb, var(--lilac) 26%, transparent));
+    mix-blend-mode:multiply;
+  }
+  @media (prefers-color-scheme: dark){ :root:not([data-theme="light"]) .shot::after{ mix-blend-mode:screen; opacity:.5; } }
+  :root[data-theme="dark"] .shot::after{ mix-blend-mode:screen; opacity:.5; }
+  @media (max-width:860px){
+    .ow-hero .wrap{ grid-template-columns:1fr; gap:34px; }
+    .shot{ justify-self:start; width:min(300px,68vw); order:-1; }
+  }
+
+
   /* a release */
   .rel{
     display:grid; grid-template-columns:clamp(150px, 20vw, 210px) 1fr; gap:clamp(24px, 4vw, 48px);
@@ -523,6 +545,7 @@
       <li><a href="/#events">Events</a></li>
       <li><a href="/#prices">Prices</a></li>
       <li><a href="/weddings/">Weddings</a></li>
+      <li><a href="/originalworks" aria-current="page">Originals</a></li>
       <li><a href="/#parties">Parties</a></li>
       <li><a href="/#corporate">Corporate</a></li>
       <li><a href="/#about">About</a></li>
@@ -536,9 +559,14 @@
 
   <section class="ow-hero" aria-labelledby="h1">
     <div class="wrap">
-      <span class="label">Original Works</span>
-      <h1 id="h1">What I write when the <em>set list ends</em>.</h1>
-      <p class="intro">Most of this site is about singing at your event. This page is the other half of it: my own material, and the songs I could not leave alone until I had rebuilt them my way.</p>
+      <div>
+        <span class="label">Original Works</span>
+        <h1 id="h1">What I write when the <em>set list ends</em>.</h1>
+        <p class="intro">Most of this site is about singing at your event. This page is the other half of it: my own material, and the songs I could not leave alone until I had rebuilt them my way.</p>
+      </div>
+      <figure class="shot">
+        <img src="/assets/img/portrait-studio.jpg" alt="Kyle &ldquo;Papa Bear&rdquo; Wilson, studio portrait" width="960" height="1192" fetchpriority="high">
+      </figure>
     </div>
   </section>
 
